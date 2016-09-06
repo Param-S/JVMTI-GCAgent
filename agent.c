@@ -90,7 +90,7 @@ vm_init(jvmtiEnv *jvmti, JNIEnv *env, jthread thread) {
     jvmtiError err;
     int ret;
 
-    fprintf(stderr, "VMInit...\n");
+    // fprintf(stderr, "VMInit...\n");
     ret = socket_init();
     if(ret != 0) {
         fprintf(stderr, "WARNING:  Socket Failed to initialize, err=%d", ret);
@@ -109,7 +109,7 @@ static void JNICALL
 gc_start(jvmtiEnv* jvmti) 
 {
     jvmtiError err;
-    fprintf(stderr, "GarbageCollectionStart...\n");
+    // fprintf(stderr, "GarbageCollectionStart...\n");
     if(thread_started && client_connected) {
     	err = (*jvmti)->RawMonitorEnter(jvmti, lock);
         gc_count++;
@@ -124,7 +124,7 @@ static void JNICALL
 gc_finish(jvmtiEnv* jvmti_env) 
 {
     jvmtiError err;
-    fprintf(stderr, "GarbageCollectionFinish...\n");
+    // fprintf(stderr, "GarbageCollectionFinish...\n");
     if(thread_started && client_connected) {
         send_message(0);
     }
